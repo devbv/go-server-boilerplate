@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package todo;
+
+option go_package = ".;rpc";
+
+import "google/api/annotations.proto";
+
+message Task {
+  string name = 1;
+  string detail = 2;
+  string due = 3;
+}
+
+message GetTaskListRequest {
+    string user_id = 1;
+}
+
+message GetTaskListResponse {
+    repeated Task list = 1;
+}
+
+message AddTaskRequest {
+    string user_id = 1;
+}
+
+message AddTaskResponse {
+    bool success = 1;
+}
+
+service TODOService {
+  rpc GetTaskList(GetTaskListRequest) returns (GetTaskListResponse) {
+    option (google.api.http) = {
+      get: "/v1/GetTaskList"
+    };
+  }
+  rpc AddTask(AddTaskRequest) returns (AddTaskResponse) {
+    option (google.api.http) = {
+      put: "/v1/AddTaskRequest"
+    };
+  }
+}
