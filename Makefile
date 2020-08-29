@@ -7,4 +7,4 @@ install:
     github.com/golang/protobuf/protoc-gen-go
 
 generate:
-	protoc --proto_path=./rpc --grpc-gateway_out=./pkg/rpc --swagger_out=./rpc --go_out=plugins=grpc:./pkg/rpc rpc/*.proto
+	protoc --proto_path=./rpc --grpc-gateway_out=./pkg/todo --swagger_out=./rpc --go_out=plugins=grpc:./pkg/todo rpc/*.proto

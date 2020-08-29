@@ -6,8 +6,8 @@ import (
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 
-	rpc "github.com/devbv/go-server-boilerplate/pkg/rpc"
-	"github.com/devbv/go-server-boilerplate/pkg/server"
+	"github.com/devbv/go-server-boilerplate/internal/server"
+	"github.com/devbv/go-server-boilerplate/pkg/todo"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 
 	server := server.New()
 	mux := runtime.NewServeMux()
-	err := rpc.RegisterTODOServiceHandlerServer(ctx, mux, server)
+	err := todo.RegisterTODOServiceHandlerServer(ctx, mux, server)
 	if err != nil {
 		return
 	}
