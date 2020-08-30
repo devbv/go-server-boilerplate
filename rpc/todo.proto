@@ -22,6 +22,7 @@ message GetTaskListResponse {
 
 message AddTaskRequest {
     string user_id = 1;
+    Task task = 2;
 }
 
 message AddTaskResponse {
@@ -36,7 +37,8 @@ service TODOService {
   }
   rpc AddTask(AddTaskRequest) returns (AddTaskResponse) {
     option (google.api.http) = {
-      put: "/v1/AddTaskRequest"
+      post: "/v1/AddTaskRequest",
+      body: "*"
     };
   }
 }

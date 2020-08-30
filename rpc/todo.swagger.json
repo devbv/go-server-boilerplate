@@ -12,7 +12,7 @@
   ],
   "paths": {
     "/v1/AddTaskRequest": {
-      "put": {
+      "post": {
         "operationId": "TODOService_AddTask",
         "responses": {
           "200": {
@@ -28,6 +28,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/todoAddTaskRequest"
+            }
+          }
+        ],
         "tags": [
           "TODOService"
         ]
@@ -95,6 +105,17 @@
           "items": {
             "$ref": "#/definitions/protobufAny"
           }
+        }
+      }
+    },
+    "todoAddTaskRequest": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "task": {
+          "$ref": "#/definitions/todoTask"
         }
       }
     },
